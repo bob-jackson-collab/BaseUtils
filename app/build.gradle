@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
+    defaultConfig {
+        applicationId "com.ys.baseproject"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.android.support:support-v4:25.0.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.github.jdsjlzx:LRecyclerView:1.3.2'
+    //广告弹出窗   一般用户展示最新的活动
+    compile 'cn.yipianfengye.android:ad-library:1.0'
+    compile 'com.recker.flybanner:flybanner:1.3'
+    //多行文本显示控件
+    compile 'cn.yipianfengye.android:mich-titleview:1.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+}
