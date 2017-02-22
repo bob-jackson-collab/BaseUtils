@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
 
+import com.ys.baseproject.base.BaseClickListener;
+
 
 /**
  * Created by aaron on 2015/6/17.

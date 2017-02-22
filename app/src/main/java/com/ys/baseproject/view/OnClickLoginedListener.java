@@ -3,6 +3,8 @@ package com.ys.baseproject.view;
 import android.app.Activity;
 import android.view.View;
 
+import com.ys.baseproject.base.BaseClickListener;
+
 /**
  * Created by liuchao on 2015/9/15.
  * 判断当前用户是否已登录
