@@ -46,4 +46,9 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'//ConverterFactory的Gson依赖包
     compile 'com.squareup.retrofit2:converter-scalars:2.2.0'//ConverterFactory的String依赖包
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 }
