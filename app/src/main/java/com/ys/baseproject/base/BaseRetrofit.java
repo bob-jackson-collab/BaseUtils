@@ -35,7 +35,7 @@ public class BaseRetrofit {
                         .client(getNewClient())
                         .addConverterFactory(GsonConverterFactory.create())
                          //可以加上Rxjava 相关代码 配合retrofit的使用 2.2.2版本找不到RxJavaCallAdapterFactory
-                  //http://blog.csdn.net/aiynmimi/article/details/53382567  这篇博客专门介绍Rxjava2
+                        //http://blog.csdn.net/aiynmimi/article/details/53382567  这篇博客专门介绍Rxjava2
                          .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .build();
             }
