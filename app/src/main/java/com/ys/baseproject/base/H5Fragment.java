@@ -13,7 +13,7 @@ import butterknife.BindView;
 public class H5Fragment extends BaseFragment{
 
     @BindView(R.id.webView)
-    private WebView webView;
+    public WebView webView;
 
     private H5Activity h5Activity;
 

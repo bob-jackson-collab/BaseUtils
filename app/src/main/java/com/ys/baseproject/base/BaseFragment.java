@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Administrator on 2017/2/7.
  */
@@ -62,6 +64,8 @@ public class BaseFragment extends Fragment implements IBaseFragment{
             int layoutResId = getCreateViewLayoutId();
             if (layoutResId > 0)
                 inflateView = inflater.inflate(getCreateViewLayoutId(), container, false);
+
+            ButterKnife.bind(this,inflateView);
             // 解决点击穿透问题
             inflateView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
