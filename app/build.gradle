@@ -3,6 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
+    dataBinding{
+        enabled = true;
+    }
+
     defaultConfig {
         applicationId "com.ys.baseproject"
         minSdkVersion 14
@@ -41,6 +46,7 @@ dependencies {
     compile 'cn.yipianfengye.android:mich-titleview:1.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
 
     compile 'io.reactivex:rxjava:1.0.1'
     compile 'io.reactivex:rxandroid:1.0.1'
