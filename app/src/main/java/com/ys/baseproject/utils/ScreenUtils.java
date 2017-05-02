@@ -1,7 +1,9 @@
 package com.ys.baseproject.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.view.Window;
 import android.view.WindowManager;
 
 /**
@@ -29,6 +31,15 @@ public class ScreenUtils {
         }
 
         return mScreenUtils;
+    }
+
+    //改变屏幕的透明度
+    public static void changeWindowAlpha(Activity context, int alpha){
+        Window mWindow = context.getWindow();
+        WindowManager.LayoutParams params = mWindow.getAttributes();
+        params.alpha = alpha;
+        mWindow.setAttributes(params);
+
     }
 
     //屏幕

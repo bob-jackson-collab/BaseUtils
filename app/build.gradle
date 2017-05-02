@@ -22,6 +22,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors{
+        Test{
+            buildConfigField("String","API_BASEURL",'"http://127.0.0.1:8080:"');
+        }
+    }
 }
 
 dependencies {
@@ -38,7 +44,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.github.jdsjlzx:LRecyclerView:1.3.2'
+    compile 'com.github.jdsjlzx:LRecyclerView:1.4.0'
     //广告弹出窗   一般用户展示最新的活动
     compile 'cn.yipianfengye.android:ad-library:1.0'
     compile 'com.recker.flybanner:flybanner:1.3'
@@ -47,7 +53,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
-
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
     compile 'io.reactivex:rxjava:1.0.1'
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'

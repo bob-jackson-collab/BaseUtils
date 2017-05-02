@@ -1,12 +1,15 @@
 package com.ys.baseproject.recyclerview;
 
 
+import android.graphics.Color;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.github.jdsjlzx.ItemDecoration.DividerDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
+import com.github.jdsjlzx.interfaces.OnItemLongClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -21,7 +24,7 @@ import com.ys.baseproject.base.BaseAdapter;
  * 继承该类 实现下拉刷新和上拉加载
  */
 
-public abstract class LRecyclerViewActivity extends BaseActivity implements OnItemClickListener,OnRefreshListener,OnLoadMoreListener {
+public abstract class LRecyclerViewActivity extends BaseActivity implements OnItemClickListener,OnRefreshListener,OnLoadMoreListener ,OnItemLongClickListener{
 
     public abstract BaseAdapter getBaseAdapter();
 
@@ -31,7 +34,7 @@ public abstract class LRecyclerViewActivity extends BaseActivity implements OnIt
 
     private Toolbar toolbar;
     public LRecyclerView lRecyclerView;
-    private LRecyclerViewAdapter lRecyclerViewAdapter;
+    public LRecyclerViewAdapter lRecyclerViewAdapter;
 
 //    private LinearLayoutManager linearLayoutManager;
 //    private GridLayoutManager gridLayoutManager;
@@ -67,12 +70,24 @@ public abstract class LRecyclerViewActivity extends BaseActivity implements OnIt
         lRecyclerView.setLayoutManager(getLayoutManager());
         //设置LRecyclerView自适应布局
         lRecyclerView.setHasFixedSize(true);
-        DividerItemDecoration divider = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
+        DividerDecoration divider = new DividerDecoration.Builder(this)
+                .setHeight(2.0f)
+                .setColor(Color.RED)
+                .build();
+//        DividerItemDecoration divider = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
         //设置LRecyclerView分割线
         lRecyclerView.addItemDecoration(divider);
         lRecyclerView.setOnRefreshListener(this);
         lRecyclerView.setOnLoadMoreListener(this);
         lRecyclerViewAdapter.setOnItemClickListener(this);
+        lRecyclerViewAdapter.setOnItemLongClickListener(this);
+        //设置头部加载颜色
+        lRecyclerView.setHeaderViewColor(R.color.colorAccent, R.color.colorPrimaryDark ,android.R.color.white);
+        //设置底部加载颜色
+        lRecyclerView.setFooterViewColor(R.color.colorAccent, R.color.colorPrimaryDark ,android.R.color.white);
+        //设置底部加载文字提示
+        lRecyclerView.setFooterViewHint("拼命加载中","已经全部为你呈现了","网络不给力啊，点击再试一次吧");
+
     }
 
     /**
@@ -82,6 +97,11 @@ public abstract class LRecyclerViewActivity extends BaseActivity implements OnIt
      */
     @Override
     public void onItemClick(View view, int position) {
+
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
 
     }
 
