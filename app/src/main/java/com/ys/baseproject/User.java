@@ -13,9 +13,10 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "User")
 public class User extends BaseObservable{
 
+    @DatabaseField(columnName = "url")
     private String url;
 
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true,canBeNull = false)
     private int id;
 
     @DatabaseField(columnName = "userName")
@@ -35,10 +36,13 @@ public class User extends BaseObservable{
         isSelected = selected;
     }
 
-    public User(String userName, String userAge,boolean isSelected) {
+    public User(){
+
+    }
+    public User(String userName, String userAge) {
         this.userName = userName;
         this.userAge = userAge;
-        this.isSelected = isSelected;
+//        this.isSelected = isSelected;
     }
 
     public int getId() {

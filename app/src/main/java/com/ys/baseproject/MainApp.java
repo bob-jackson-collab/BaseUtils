@@ -2,8 +2,10 @@ package com.ys.baseproject;
 
 import android.app.Application;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.blankj.utilcode.utils.NetworkUtils;
 import com.blankj.utilcode.utils.Utils;
+import com.facebook.stetho.Stetho;
 import com.uuch.adlibrary.LApplication;
 import com.ys.baseproject.utils.UniversalUtils;
 
@@ -18,6 +20,7 @@ public class MainApp extends Application{
         super.onCreate();
 
         Utils.init(getApplicationContext());
-
+        Stetho.initializeWithDefaults(this);
+        SDKInitializer.initialize(getApplicationContext());
     }
 }

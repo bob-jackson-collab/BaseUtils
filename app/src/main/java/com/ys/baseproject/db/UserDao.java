@@ -1,7 +1,9 @@
 package com.ys.baseproject.db;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.ys.baseproject.User;
 
 import java.sql.SQLException;
@@ -13,10 +15,6 @@ import java.util.List;
 
 public class UserDao {
 
-    private UserDao userDaoOpe;
-
-    private Context context;
-
     private DatabaseHelper helper;
 
     public UserDao(Context context){
@@ -26,11 +24,31 @@ public class UserDao {
     public void addUser(User user){
         try {
             helper.getDao(User.class).create(user);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    public DeleteBuilder getBuilder(){
+        try {
+            return helper.getDao(User.class).deleteBuilder();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void addUsers(List<User> lists){
+        try{
+            helper.getDao(User.class).create(lists);
+//            Log.e("info",i+"");
+        }catch (Exception e){
+            Log.e("infoerror",e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void deleteUser(User user){
         try {
@@ -39,6 +57,7 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+
 
     public void upDateUser(User user){
         try {

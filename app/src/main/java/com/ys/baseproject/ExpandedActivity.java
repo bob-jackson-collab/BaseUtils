@@ -23,6 +23,7 @@ public class ExpandedActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expandable);
         mListView = (ExpandableListView) findViewById(R.id.expande_list);
+        //取消展开的标识
         mListView.setGroupIndicator(null);
 
         ArrayList<String> groupList = new ArrayList<>();
@@ -53,6 +54,7 @@ public class ExpandedActivity extends AppCompatActivity{
             }
         });
 
+        //默认第一项展开
         mListView.expandGroup(0);
     }
 }

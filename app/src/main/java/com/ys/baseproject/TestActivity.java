@@ -42,14 +42,14 @@ public class TestActivity extends AppCompatActivity{
 
     public void loadData() {
          userList = new ArrayList<>();
-        userList.add(new User("1111","11",false));
-        userList.add(new User("1112","11",false));
-        userList.add(new User("1113","11",false));
-        userList.add(new User("1114","11",false));
-        userList.add(new User("1115","11",false));
-        userList.add(new User("1116","11",false));
-        userList.add(new User("1117","11",false));
-        userList.add(new User("1118","11",false));
-        userList.add(new User("1119","11",false));
+//        userList.add(new User("1111","11",false));
+//        userList.add(new User("1112","11",false));
+//        userList.add(new User("1113","11",false));
+//        userList.add(new User("1114","11",false));
+//        userList.add(new User("1115","11",false));
+//        userList.add(new User("1116","11",false));
+//        userList.add(new User("1117","11",false));
+//        userList.add(new User("1118","11",false));
+//        userList.add(new User("1119","11",false));
     }
 }

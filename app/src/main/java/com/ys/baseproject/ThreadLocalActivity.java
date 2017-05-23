@@ -47,7 +47,7 @@ public class ThreadLocalActivity extends AppCompatActivity{
         TextView textView = (TextView) findViewById(R.id.text);
 
 
-        User user =new User("11","22",false);
+        User user =new User("11","22");
         user.setUrl("https://imgsa.baidu.com/baike/s%3D220/sign=8ebf59a15243fbf2c12ca121807fca1e/fcfaaf51f3deb48fc4b7dd77f11f3a292cf578b8.jpg");
 
         mBinding.setUser(user);
