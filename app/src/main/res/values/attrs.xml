@@ -3,4 +3,11 @@
     <declare-styleable name="RotateTextView">
         <attr name="degree" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="CustomMyViewTitle">
+        <attr name="titleTextview" format="string" />
+        <attr name="titleColorview" format="color" />
+        <attr name="titleSizeview" format="dimension" />
+    </declare-styleable>
+
 </resources>

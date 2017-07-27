@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="155001-鼎翔盘锦大米袋鼎翔盘锦大米"
+            android:textColor="#666"
+            android:textSize="@dimen/sp_14" />
+
+        <ImageView
+            android:id="@+id/image_qr"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@id/tv_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/rel" />
+
+    <ImageView
+        android:id="@+id/image_dismiss"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/view"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_tip" />
+</RelativeLayout>

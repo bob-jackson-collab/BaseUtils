@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ys.baseproject.view.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vDHLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- ***侧滑页面布局 -->
+    <RelativeLayout
+        android:id="@+id/left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark">
+        <!-- 测试数据 -->
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher" />
+        <!-- 测试列表数据 -->
+        <ListView
+            android:id="@+id/left_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/left_image"></ListView>
+
+    </RelativeLayout>
+    <!-- 主页面左侧阴影（可以选择有或者无，如果无的话就去VDHLayout里删除相关代码） -->
+    <!--<LinearLayout-->
+    <!--android:layout_width="8dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/left_shade"></LinearLayout>-->
+    <!-- ***主页面布局 -->
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_dark"
+        android:visibility="visible">
+        <!-- 测试数据 -->
+        <ImageView
+            android:id="@+id/main_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher" />
+
+        <!-- 测试列表数据 -->
+        <ListView
+            android:id="@+id/main_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_image"></ListView>
+        <!-- ***打开侧边页面主页面实现逐渐变暗 -->
+        <ImageView
+            android:id="@+id/main_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+    </RelativeLayout>
+
+</com.ys.baseproject.view.DragLayout>

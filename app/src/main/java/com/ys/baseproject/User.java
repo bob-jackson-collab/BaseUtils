@@ -69,13 +69,11 @@ public class User extends BaseObservable{
         this.userAge = userAge;
     }
 
-    @Bindable
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-        notifyPropertyChanged(com.ys.baseproject.BR.url);
     }
 }

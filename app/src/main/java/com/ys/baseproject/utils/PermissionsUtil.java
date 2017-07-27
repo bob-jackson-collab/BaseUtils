@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 /**
  * 权限控制工具类：
  * 为了适配API23，即Android M 在清单文件中配置use permissions后，还要在程序运行的时候进行申请。
- *
+ * <p>
  * ***整个权限的申请与处理的过程是这样的：
  * *****1.进入主Activity，首先申请所有的权限；
  * *****2.用户对权限进行授权，有2种情况：
@@ -39,26 +40,26 @@ public class PermissionsUtil {
 
     //常量字符串数组，将需要申请的权限写进去，同时必须要在Androidmanifest.xml中声明。
     private static String[] PERMISSIONS_GROUP = {
-            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.ACCESS_WIFI_STATE,
-            Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_CONTACTS,
-            Manifest.permission.SEND_SMS, Manifest.permission.CALL_PHONE
+            Manifest.permission.CAMERA
+//            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE
+//            Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.ACCESS_WIFI_STATE,
+//            Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_CONTACTS,
+//            Manifest.permission.SEND_SMS, Manifest.permission.CALL_PHONE
     };
 
     public static void checkAndRequestPermissions(final Activity activity) {
-
         // 一个list，用来存放没有被授权的权限
         ArrayList<String> denidArray = new ArrayList<>();
 
         // 遍历PERMISSIONS_GROUP，将没有被授权的权限存放进denidArray
         for (String permission : PERMISSIONS_GROUP) {
             int grantCode = ActivityCompat.checkSelfPermission(activity, permission);
-            if (grantCode == PackageManager.PERMISSION_DENIED) {
+            if (grantCode == PackageManager.PERMISSION_DENIED) {   //权限被拒绝
                 denidArray.add(permission);
             }
         }
 
-        Log.e("权限大小",denidArray.size()+"");
+        Log.e("权限大小", denidArray.size() + "" + denidArray.toString());
 
         // 将denidArray转化为字符串数组，方便下面调用requestPermissions来请求授权
         String[] denidPermissions = denidArray.toArray(new String[denidArray.size()]);
@@ -71,15 +72,15 @@ public class PermissionsUtil {
                 if (!showRationaleUI(activity, permission)) {
                     // 判断App是否是首次启动
                     if (!isAppFirstRun(activity)) {
-                        Snackbar snackbar =
-                                Snackbar.make(activity.findViewById(R.id.btn_sdcard_avail), "此功能需要您来授权",
-                                        Snackbar.LENGTH_LONG);
+                        Snackbar snackbar = Snackbar.make(activity.findViewById(R.id.btn_sdcard_avail), "此功能需要您来授权", Snackbar.LENGTH_LONG);
                         snackbar.setAction("前往设置", new View.OnClickListener() {
-                            @Override public void onClick(View v) {
+                            @Override
+                            public void onClick(View v) {
                                 // 进入App设置页面
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
-                                intent.setData(uri);
+                                Intent intent = getAppDetailSettingIntent(activity);
+//                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                                Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+//                                intent.setData(uri);
                                 activity.startActivityForResult(intent, REQUEST_PERMISSION_SETTING);
                             }
                         });
@@ -127,5 +128,25 @@ public class PermissionsUtil {
             editor.commit();
             return false;
         }
+    }
+
+
+    /**
+     * 获取应用详情页面intent
+     *
+     * @return
+     */
+    public static Intent getAppDetailSettingIntent(Activity activity) {
+        Intent localIntent = new Intent();
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= 9) {
+            localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+            localIntent.setData(Uri.fromParts("package", activity.getPackageName(), null));
+        } else if (Build.VERSION.SDK_INT <= 8) {
+            localIntent.setAction(Intent.ACTION_VIEW);
+            localIntent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+            localIntent.putExtra("com.android.settings.ApplicationPkgName", activity.getPackageName());
+        }
+        return localIntent;
     }
 }

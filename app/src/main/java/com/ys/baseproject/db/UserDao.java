@@ -8,6 +8,7 @@ import com.ys.baseproject.User;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * Created by yunshan on 17/3/22.
@@ -38,10 +39,19 @@ public class UserDao {
         return null;
     }
 
-    public void addUsers(List<User> lists){
+    public void addUsers(final List<User> lists){
         try{
-            helper.getDao(User.class).create(lists);
-//            Log.e("info",i+"");
+
+            helper.getDao(User.class).callBatchTasks(new Callable() {
+                @Override
+                public Object call() throws Exception {
+
+                    for(User user:lists){
+                        helper.getDao(User.class).create(user);
+                    }
+                    return null;
+                }
+            });
         }catch (Exception e){
             Log.e("infoerror",e.getMessage());
             e.printStackTrace();

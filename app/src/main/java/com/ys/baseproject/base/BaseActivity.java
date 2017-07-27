@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.baidu.mapapi.map.Overlay;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.ys.baseproject.net.NetChangeObserver;
 import com.ys.baseproject.net.NetStateReceiver;
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private NetChangeObserver mObserver;
 
     public  BaseActivity mContext;
+
 
     public abstract void handleLayoutAndData();
 

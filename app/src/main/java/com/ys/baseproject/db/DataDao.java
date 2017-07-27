@@ -18,11 +18,11 @@ public class DataDao {
 
     private DatabaseHelper helper;
 
-    public DataDao(Context context){
+    public DataDao(Context context) {
         helper = DatabaseHelper.getHelper(context);
     }
 
-    public void addUser(Status user){
+    public void addUser(Status user) {
         try {
             helper.getDao(Status.class).createOrUpdate(user);
         } catch (SQLException e) {
@@ -30,7 +30,7 @@ public class DataDao {
         }
     }
 
-    public DeleteBuilder getBuilder(){
+    public DeleteBuilder getBuilder() {
         try {
             return helper.getDao(Status.class).deleteBuilder();
         } catch (SQLException e) {
@@ -39,26 +39,29 @@ public class DataDao {
         return null;
     }
 
-    public void addUsers(List<Status> lists){
-        try{
+    public void addUsers(final List<Status> lists) {
+        try {
             helper.getDao(Status.class).callBatchTasks(new Callable() {
                 @Override
                 public Object call() throws Exception {
+                    for(Status status:lists){
+                        helper.getDao(Status.class).create(status);
+                    }
 
                     return null;
                 }
             });
-            helper.getDao(Status.class).create(lists);
+
+//            helper.getDao(Status.class).commit();
 //            Log.e("info",i+"");
-        }catch (Exception e){
-            Log.e("infoerror",e.getMessage());
+        } catch (Exception e) {
+            Log.e("infoerror", e.getMessage());
             e.printStackTrace();
         }
     }
 
 
-
-    public void deleteUser(Status user){
+    public void deleteUser(Status user) {
         try {
             helper.getDao(Status.class).delete(user);
         } catch (SQLException e) {
@@ -66,7 +69,7 @@ public class DataDao {
         }
     }
 
-    public void deleteAllUser(List<Status> user){
+    public void deleteAllUser(List<Status> user) {
         try {
             helper.getDao(Status.class).delete(user);
         } catch (SQLException e) {
@@ -75,7 +78,7 @@ public class DataDao {
     }
 
 
-    public void upDateUser(Status user){
+    public void upDateUser(Status user) {
         try {
             helper.getDao(Status.class).update(user);
         } catch (SQLException e) {
@@ -83,7 +86,7 @@ public class DataDao {
         }
     }
 
-    public Status queryUser(int id){
+    public Status queryUser(int id) {
 
         Status user = null;
         try {
@@ -94,7 +97,7 @@ public class DataDao {
         return user;
     }
 
-    public List<Status> queryAll(){
+    public List<Status> queryAll() {
         try {
             List<Status> list = helper.getDao(Status.class).queryForAll();
             return list;

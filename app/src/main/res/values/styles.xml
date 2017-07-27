@@ -18,12 +18,14 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
     <style name="CustomDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
     </style>
 
     <style name="style0">
@@ -31,5 +33,15 @@
     </style>
     <style name="style1">
         <item name="android:textColor">#FF0000</item>
-    </style>
+
+   </style>
+        <style name="IndicateText">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:layout_weight">1</item>
+            <item name="android:padding">4dp</item>
+            <item name="android:gravity">center</item>
+            <item name="android:textColor">#ffffff</item>
+            <item name="android:background">#33000000</item>
+        </style>
 </resources>

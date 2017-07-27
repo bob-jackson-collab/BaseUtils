@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <FrameLayout
@@ -8,10 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <!--<com.ys.baseproject.view.RedCircleTextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:text="打单" />-->
+        <com.ys.baseproject.view.MyViewAndCircle
+            android:id="@+id/text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="111" />
+            android:layout_height="45dp"
+            app:titleSizeview="16sp"
+            />
     </FrameLayout>
 
 
